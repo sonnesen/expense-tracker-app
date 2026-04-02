@@ -18,7 +18,6 @@ Expense Tracker App é uma aplicação backend para rastreamento e gerenciamento
 - ✅ Filtro de despesas por período (semana/mês)
 - ✅ Docker Compose para ambiente de desenvolvimento
 - ✅ Suporte a DEV Tools para desenvolvimento rápido
-- ✅ Testes automatizados
 - ✅ Java 21 com recursos modernos
 
 ## 🛠️ Tecnologias
