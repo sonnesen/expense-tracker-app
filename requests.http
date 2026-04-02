@@ -1,0 +1,48 @@
+### Create a new expense
+POST http://localhost:8080/v1/expenses
+Content-Type: application/json
+
+{
+  "description": "Lunch at the cafe",
+  "amount": 15.50,
+  "category": "Food"
+}
+
+### Create another expense
+POST http://localhost:8080/v1/expenses
+Content-Type: application/json
+
+{
+  "description": "Monthly subscription",
+  "amount": 9.99,
+  "category": "Entertainment"
+}
+
+### Create a third expense
+POST http://localhost:8080/v1/expenses
+Content-Type: application/json
+
+{
+  "description": "Grocery shopping",
+  "amount": 45.20,
+  "category": "Groceries"
+}
+
+### Create a fourth expense
+POST http://localhost:8080/v1/expenses
+Content-Type: application/json
+
+{
+  "description": "Movie tickets",
+  "amount": 25.00,
+  "category": "Entertainment"
+}
+
+### Get all expenses for the last month
+GET http://localhost:8080/v1/expenses?period=MONTH
+
+### Get all expenses for the last week
+GET http://localhost:8080/v1/expenses?period=WEEK
+
+### Get all expenses
+GET http://localhost:8080/v1/expenses

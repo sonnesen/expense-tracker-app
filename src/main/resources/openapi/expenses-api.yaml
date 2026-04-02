@@ -1,0 +1,98 @@
+openapi: "3.0.3"
+info:
+  title: Expense Tracker API
+  description: API for tracking expenses
+  version: "1.0"
+servers:
+  - url: http://localhost:8080
+    description: Local development server
+  - url: https://api.expensetracker.com
+    description: Production server
+tags:
+  - name: Expenses
+    description: Operations related to expenses
+paths:
+  /v1/expenses:
+    post:
+      tags:
+        - Expenses
+      summary: Create a new expense
+      operationId: createExpense
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ExpenseRequest"
+      responses:
+        "201":
+          description: Expense created successfully
+        "400":
+          description: Bad request
+    get:
+      tags:
+        - Expenses
+      summary: Get a list of expenses
+      operationId: getExpenses
+      parameters:
+        - in: query
+          name: period
+          schema:
+            type: string
+            enum: [WEEK, MONTH]
+          description: Period for which to retrieve expenses
+      responses:
+        "200":
+          description: A list of expenses
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ExpenseResponse"
+components:
+  schemas:
+    ExpenseRequest:
+      type: object
+      properties:
+        amount:
+          type: number
+          format: float
+          description: The amount of the expense
+          example: 25.50
+        description:
+          type: string
+          description: A brief description of the expense
+          example: Lunch at a cafe
+        category:
+          type: string
+          description: The category of the expense (e.g., Food, Transportation)
+          example: Food
+      required:
+        - amount
+        - description
+        - category
+    ExpenseResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the expense
+        amount:
+          type: number
+          format: float
+          description: The amount of the expense
+          example: 25.50
+        description:
+          type: string
+          description: A brief description of the expense
+          example: Lunch at a cafe
+        date:
+          type: string
+          format: date-time
+          description: The date of the expense
+          example: 2023-09-15T14:30:00Z
+        category:
+          type: string
+          description: The category of the expense (e.g., Food, Transportation)
+          example: Food
